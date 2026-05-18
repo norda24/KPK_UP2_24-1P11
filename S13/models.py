@@ -3,7 +3,7 @@ import datetime
 from peewee import SqliteDatabase, Model, CharField, DateTimeField, \
     ForeignKeyField, IntegerField
 
-db = SqliteDatabase('work_programs.db')
+db = SqliteDatabase('work_programs.db', pragmas={'foreign_keys': 1})
 
 
 class BaseModel(Model):
@@ -33,7 +33,8 @@ class ProgramAssignment(BaseModel):
     program = ForeignKeyField(
         WorkProgram,
         backref='assignments',
-        on_delete='CASCADE'
+        on_delete='CASCADE',
+        column_name='work_program_id'
     )
     specialty_id = IntegerField(null=False)
     discipline_id = IntegerField(null=False)
