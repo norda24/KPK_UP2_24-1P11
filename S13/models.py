@@ -23,7 +23,7 @@ class WorkProgram(BaseModel):
 
     class Meta:
         indexes = (
-            (('title', 'version'), True),
+            (('title', 'version'), True), 
         )
 
 
